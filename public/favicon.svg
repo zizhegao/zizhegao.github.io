@@ -1,4 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <rect width="64" height="64" rx="16" fill="#0040DD"/>
-  <text x="32" y="45" text-anchor="middle" font-family="Inter, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="40" font-weight="800" fill="#fff" transform="rotate(-6 32 32)">Z</text>
+  <g transform="rotate(-6 32 32)" font-family="Inter, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-weight="800" fill="#fff" text-anchor="middle">
+    <text x="32" y="30" font-size="25">No</text>
+    <text x="32" y="53" font-size="25">rush</text>
+  </g>
 </svg>
