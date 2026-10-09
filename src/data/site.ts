@@ -2,10 +2,10 @@ export const GITHUB_URL = 'https://github.com/zizhegao';
 
 export type Category = '技术' | '随笔' | '读书';
 
-export const CATEGORIES: { label: Category; color: string; fg: string; blurb: string }[] = [
-  { label: '技术', color: '#0040DD', fg: '#fff', blurb: '技术笔记' },
-  { label: '随笔', color: '#FE8624', fg: '#000', blurb: '国庆亲子出行系列' },
-  { label: '读书', color: '#743DFF', fg: '#fff', blurb: '读书笔记' },
+export const CATEGORIES: { label: Category; color: string; fg: string }[] = [
+  { label: '技术', color: '#0040DD', fg: '#fff' },
+  { label: '随笔', color: '#FE8624', fg: '#000' },
+  { label: '读书', color: '#743DFF', fg: '#fff' },
 ];
 
 export const CITY_COLORS: Record<string, string> = {

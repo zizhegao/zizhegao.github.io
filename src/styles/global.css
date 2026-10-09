@@ -113,7 +113,9 @@ button { font-family: inherit; }
 .cat-tile { transition: transform var(--ease-hover); }
 .cat-tile:hover { text-decoration: none; transform: translateY(-4px); }
 .cat-tile .k { font-size: 13px; font-weight: 700; }
-.cat-tile .v { font-size: 22px; font-weight: 800; }
+.cat-tile .v { font-size: 22px; font-weight: 800; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.cat-tile > div { min-width: 0; }
+.cat-tile .n { margin-left: 16px; }
 .cat-tile .n { font-size: 40px; font-weight: 800; }
 
 /* ---------- Article list ---------- */

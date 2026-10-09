@@ -8,6 +8,8 @@ const posts = await getPosts();
 const [lead, ...others] = posts;
 const rest = others.slice(0, 4);
 const count = (c: string) => posts.filter((p) => p.data.category === c).length;
+// posts 已按日期倒序，第一篇即该分类最新文章
+const latestIn = (c: string) => posts.find((p) => p.data.category === c);
 const linkAttrs = (p: (typeof posts)[number]) => {
   const l = postLink(p);
   return { href: l.href, ...(l.external ? { target: '_blank', rel: 'noopener' } : {}) };
@@ -59,7 +61,7 @@ const linkAttrs = (p: (typeof posts)[number]) => {
         <a class="cat-tile" href={`/posts/?c=${encodeURIComponent(c.label)}`} style={`background:${c.color};color:${c.fg}`}>
           <div>
             <div class="k" style={c.fg === '#fff' ? 'opacity:.85' : ''}>{c.label}</div>
-            <div class="v">{count(c.label) > 0 ? c.blurb : '还没有文章，正在写'}</div>
+            <div class="v">{latestIn(c.label)?.data.title ?? '还没有文章，正在写'}</div>
           </div>
           <span class="n">{count(c.label)}</span>
         </a>
