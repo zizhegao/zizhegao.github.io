@@ -48,6 +48,22 @@ const dateText = d.date.toISOString().slice(0, 10).replaceAll('-', '.');
 </Base>
 
 <script>
+  // 小红书链接多为电脑端分享链接（xsec_source=pc_*），其 token 在手机 App 内校验不通过，
+  // 只会唤起 App 却进不了笔记。手机上改用只带笔记 ID 的 App 直达地址，唤起失败再退回网页链接。
+  if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+    document.querySelectorAll<HTMLAnchorElement>('.prose a[href*="xiaohongshu.com/"]').forEach((a) => {
+      const id = a.href.match(/\/(?:explore|search_result|discovery\/item)\/([0-9a-f]{24})/)?.[1];
+      if (!id) return;
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        location.href = `xhsdiscover://item/${id}`;
+        setTimeout(() => {
+          if (!document.hidden) location.href = a.href;
+        }, 1800);
+      });
+    });
+  }
+
   // 目录随滚动高亮当前 H2
   const links = [...document.querySelectorAll<HTMLAnchorElement>('[data-toc]')];
   const heads = links.map((a) => document.getElementById(a.dataset.toc!)).filter((h): h is HTMLElement => !!h);
