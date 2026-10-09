@@ -110,6 +110,8 @@ button { font-family: inherit; }
 
 .cats { padding: 8px 32px 40px; display: flex; gap: 16px; }
 .cat-tile { flex: 1; padding: 24px 28px; border-radius: 24px; display: flex; justify-content: space-between; align-items: center; }
+.cat-tile { transition: transform var(--ease-hover); }
+.cat-tile:hover { text-decoration: none; transform: translateY(-4px); }
 .cat-tile .k { font-size: 13px; font-weight: 700; }
 .cat-tile .v { font-size: 22px; font-weight: 800; }
 .cat-tile .n { font-size: 40px; font-weight: 800; }

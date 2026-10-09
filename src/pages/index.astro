@@ -56,13 +56,13 @@ const linkAttrs = (p: (typeof posts)[number]) => {
   <section class="cats">
     {
       CATEGORIES.map((c) => (
-        <div class="cat-tile" style={`background:${c.color};color:${c.fg}`}>
+        <a class="cat-tile" href={`/posts/?c=${encodeURIComponent(c.label)}`} style={`background:${c.color};color:${c.fg}`}>
           <div>
             <div class="k" style={c.fg === '#fff' ? 'opacity:.85' : ''}>{c.label}</div>
             <div class="v">{count(c.label) > 0 ? c.blurb : '还没有文章，正在写'}</div>
           </div>
           <span class="n">{count(c.label)}</span>
-        </div>
+        </a>
       ))
     }
   </section>
