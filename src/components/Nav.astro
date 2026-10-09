@@ -11,7 +11,10 @@ const { current } = Astro.props;
   <nav class="nav" aria-label="主导航">
     <a class="brand" href="/">
       <span class="brand-mark">No rush</span>
-      <span>不赶路</span>
+      <span class="wordmark">
+        <span class="wm-text" aria-label="不赶路"><span aria-hidden="true">不</span><span class="wm-step" aria-hidden="true">赶</span><span aria-hidden="true">路</span></span>
+        <span class="wm-trail" aria-hidden="true"><i></i><i></i><i></i></span>
+      </span>
     </a>
     <div class="seg">
       <a href="/" aria-current={current === 'home' ? 'page' : undefined}>首页</a>
