@@ -91,13 +91,11 @@ button { font-family: inherit; }
 /* ---------- Home ---------- */
 .hero { padding: 72px 64px 48px; display: flex; gap: 48px; align-items: flex-end; }
 .hero-main { flex: 1; }
-.eyebrow { font-size: 13px; font-weight: 700; color: var(--acc-fg); letter-spacing: 0.2px; text-transform: uppercase; margin-bottom: 16px; }
 .hero h1 { margin: 0; font-size: 76px; line-height: 1.12; font-weight: 800; letter-spacing: -0.03em; color: var(--fg); }
 .sticker { display: inline-block; padding: 0 18px; }
 .sticker.tech { background: #0040dd; color: #fff; border-radius: 9999px; transform: rotate(-2deg); }
 .sticker.essay { background: #fe8624; color: #000; border-radius: 20px; transform: rotate(2deg); }
 .sticker.book { background: #743dff; color: #fff; border-radius: 9999px; transform: rotate(-1.5deg); }
-.hero-aside { flex: 0 0 300px; margin: 0; font-size: 17px; line-height: 1.7; color: var(--fg2); }
 
 .bento { padding: 0 32px 32px; display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 260px 260px; gap: 16px; }
 .bento-lead { grid-row: span 2; position: relative; border-radius: 24px; overflow: hidden; display: block; color: #fff; }
@@ -244,7 +242,6 @@ button { font-family: inherit; }
   .icon-btn { width: 36px; height: 36px; }
   .hero { flex-direction: column; align-items: flex-start; gap: 24px; padding: 32px 16px 28px; }
   .hero h1 { font-size: 42px; }
-  .hero-aside { flex: none; font-size: 15px; }
   .bento { padding: 0 16px 24px; grid-template-columns: 1fr; grid-template-rows: none; grid-auto-rows: auto; }
   .bento-lead { min-height: 380px; }
   .bento-lead h2 { font-size: 28px; }
