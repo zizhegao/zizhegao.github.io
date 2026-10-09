@@ -1,0 +1,87 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import { getPosts, postLink } from '../../data/posts';
+import { CATEGORIES, categoryColor } from '../../data/site';
+
+const posts = await getPosts();
+const filters = [
+  { label: '全部', color: 'var(--fg2)', count: posts.length },
+  ...CATEGORIES.map((c) => ({
+    label: c.label as string,
+    color: c.color,
+    count: posts.filter((p) => p.data.category === c.label).length,
+  })),
+];
+---
+
+<Base title="文章" current="posts" description="技术、随笔、读书笔记。">
+  <section class="list-head">
+    <h1>文章</h1>
+    <div class="filters" role="group" aria-label="分类筛选">
+      {
+        filters.map((f) => (
+          <button class="filter" type="button" data-filter={f.label} aria-pressed={f.label === '全部' ? 'true' : 'false'}>
+            <span class="dot" style={`background:${f.color}`} />
+            {f.label}
+            <span class="c">{f.count}</span>
+          </button>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="grid">
+    {
+      posts.map((p) => {
+        const l = postLink(p);
+        return (
+          <a class="card" href={l.href} data-cat={p.data.category} {...(l.external ? { target: '_blank', rel: 'noopener' } : {})}>
+            <Image src={p.data.cover} alt="" widths={[400, 640]} sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" />
+            <div class="body">
+              <div class="tags">
+                <span class="tag cat" style={`background:${categoryColor(p.data.category)}`}>{p.data.category}</span>
+                {p.data.city && <span class="tag">{p.data.city}</span>}
+              </div>
+              <h3>{p.data.title}</h3>
+              <p>{p.data.description}</p>
+            </div>
+          </a>
+        );
+      })
+    }
+    <div class="empty" data-empty hidden>这个分类还没有文章。</div>
+  </section>
+</Base>
+
+<script>
+  const buttons = [...document.querySelectorAll<HTMLButtonElement>('[data-filter]')];
+  const cards = [...document.querySelectorAll<HTMLElement>('[data-cat]')];
+  const empty = document.querySelector<HTMLElement>('[data-empty]')!;
+  const known = new Set(buttons.map((b) => b.dataset.filter));
+
+  function apply(label: string) {
+    let shown = 0;
+    for (const c of cards) {
+      const on = label === '全部' || c.dataset.cat === label;
+      c.hidden = !on;
+      if (on) shown++;
+    }
+    empty.hidden = shown > 0;
+    for (const b of buttons) b.setAttribute('aria-pressed', String(b.dataset.filter === label));
+  }
+
+  const fromUrl = new URLSearchParams(location.search).get('c');
+  apply(fromUrl && known.has(fromUrl) ? fromUrl : '全部');
+
+  for (const b of buttons) {
+    b.addEventListener('click', () => {
+      const label = b.dataset.filter!;
+      apply(label);
+      const url = new URL(location.href);
+      if (label === '全部') url.searchParams.delete('c');
+      else url.searchParams.set('c', label);
+      history.replaceState(null, '', url);
+    });
+  }
+</script>

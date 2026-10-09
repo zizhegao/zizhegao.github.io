@@ -1,0 +1,67 @@
+---
+import { Image } from 'astro:assets';
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { getPosts, type Post } from '../../data/posts';
+import { categoryColor, categoryFg } from '../../data/site';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.filter((p) => !p.data.externalUrl).map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props as { post: Post };
+const { Content, headings } = await render(post);
+const toc = headings.filter((h) => h.depth === 2);
+const d = post.data;
+const heading = d.headline ?? d.title;
+const hasAccent = !!d.accent && heading.includes(d.accent);
+const [before, after] = hasAccent ? heading.split(d.accent!) : [heading, ''];
+const dateText = d.date.toISOString().slice(0, 10).replaceAll('-', '.');
+---
+
+<Base title={d.title} current="posts" description={d.description}>
+  <div class="detail">
+    <aside class="toc">
+      {
+        toc.length > 0 && (
+          <div class="toc-inner">
+            <div class="toc-title">目录</div>
+            {toc.map((h) => <a href={`#${h.slug}`} data-toc={h.slug}>{h.text}</a>)}
+          </div>
+        )
+      }
+    </aside>
+    <article class="article">
+      <div class="article-tags">
+        <span class="tag" style={`background:${categoryColor(d.category)};color:${categoryFg(d.category)}`}>{d.category}</span>
+        <span class="tag">{dateText}</span>
+      </div>
+      <h1>{hasAccent ? <>{before}<em>{d.accent}</em>{after}</> : heading}</h1>
+      <p class="lede">{d.lede ?? d.description}</p>
+      <Image class="hero-img" src={d.cover} alt="" widths={[720, 1440]} sizes="(min-width: 1024px) 720px, 100vw" loading="eager" />
+      <div class="prose">
+        <Content />
+      </div>
+    </article>
+  </div>
+</Base>
+
+<script>
+  // 目录随滚动高亮当前 H2
+  const links = [...document.querySelectorAll<HTMLAnchorElement>('[data-toc]')];
+  const heads = links.map((a) => document.getElementById(a.dataset.toc!)).filter((h): h is HTMLElement => !!h);
+  if (heads.length) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (!e.isIntersecting) continue;
+          for (const a of links) a.classList.toggle('active', a.dataset.toc === e.target.id);
+        }
+      },
+      { rootMargin: '-20% 0px -70% 0px' },
+    );
+    heads.forEach((h) => io.observe(h));
+    links[0].classList.add('active');
+  }
+</script>
