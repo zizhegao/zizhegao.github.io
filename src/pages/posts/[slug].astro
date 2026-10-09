@@ -4,6 +4,10 @@ import { render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import { getPosts, type Post } from '../../data/posts';
 import { categoryColor, categoryFg } from '../../data/site';
+import '../../styles/trip.css';
+
+// 旅行方案类文章：版式自成一体，正文为迁移来的 HTML 片段（src/content/trips/<id>.html），走宽版容器
+const trips = import.meta.glob<string>('../../content/trips/*.html', { query: '?raw', import: 'default', eager: true });
 
 export async function getStaticPaths() {
   const posts = await getPosts();
@@ -11,6 +15,7 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props as { post: Post };
+const tripHtml = trips[`../../content/trips/${post.id}.html`];
 const { Content, headings } = await render(post);
 const toc = headings.filter((h) => h.depth === 2);
 const d = post.data;
@@ -21,6 +26,7 @@ const dateText = d.date.toISOString().slice(0, 10).replaceAll('-', '.');
 ---
 
 <Base title={d.title} current="posts" description={d.description}>
+  {tripHtml ? <Fragment set:html={tripHtml} /> : (
   <div class="detail">
     <aside class="toc">
       {
@@ -45,13 +51,16 @@ const dateText = d.date.toISOString().slice(0, 10).replaceAll('-', '.');
       </div>
     </article>
   </div>
+  )}
 </Base>
 
 <script>
+  import '../../scripts/trip-lightbox';
+
   // 小红书链接多为电脑端分享链接（xsec_source=pc_*），其 token 在手机 App 内校验不通过，
   // 只会唤起 App 却进不了笔记。手机上改用只带笔记 ID 的 App 直达地址，唤起失败再退回网页链接。
   if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-    document.querySelectorAll<HTMLAnchorElement>('.prose a[href*="xiaohongshu.com/"]').forEach((a) => {
+    document.querySelectorAll<HTMLAnchorElement>('.prose a[href*="xiaohongshu.com/"], .trip a[href*="xiaohongshu.com/"]').forEach((a) => {
       const id = a.href.match(/\/(?:explore|search_result|discovery\/item)\/([0-9a-f]{24})/)?.[1];
       if (!id) return;
       a.addEventListener('click', (e) => {

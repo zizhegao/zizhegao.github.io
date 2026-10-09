@@ -6,5 +6,4 @@ city: 汕头潮州
 when: 9/30–10/3
 date: 2026-09-26
 cover: ./img/chaoshan-cover.jpg
-externalUrl: https://zizhegao.github.io/nd2026-share/chaoshan/
 ---
