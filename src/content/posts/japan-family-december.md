@@ -72,6 +72,8 @@ lede: 不赶景点，也不忽略大人。四天三晚，以大阪为基地，�
 
 *Dick Thomas Johnson，2022 年 4 月 25 日，[原图](https://commons.wikimedia.org/wiki/File:Universal_Studios_Japan_2022-04-25.jpg)，[CC BY 2.0](https://creativecommons.org/licenses/by/2.0/)。并非当季圣诞活动实拍。*
 
+**更多实景参考：[USJ 入口实拍（2026 年 10 月）](https://commons.wikimedia.org/wiki/File:USJ_Entrance_2026.jpg)**。Sakai Yayoi，CC0。点击来源页查看原图；此处未嵌入，不代表十二月活动布置。
+
 #### 不把一岁宝宝当成“小号儿童游客”
 
 三岁及以下通常无需购买入园门票，但免费入园不等于可以乘坐游乐设施。园方按身高、独立坐姿及具体健康条件判断。当前耀西冒险官网最低身高为 92 厘米，不能沿用旧资料里的 86 厘米；其他项目也须逐项核验。本文不把任何机动项目写成“一岁必玩”。[耀西官方限制](https://www.usj.co.jp/web/en/us/service-guide/safe/yoshis-adventure) · [官方身高规则](https://www.usj.co.jp/web/ja/jp/attractions/requirements/height-restriction)
@@ -116,9 +118,13 @@ lede: 不赶景点，也不忽略大人。四天三晚，以大阪为基地，�
 
 #### 晴天 A：公园外围加酒店午休
 
+**实景参考：[大阪城公园东外壕秋景](https://commons.wikimedia.org/wiki/File:Osaka_Castle_Park_in_202011_002.jpg)**。Mc681，2020 年 11 月，[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)。点击查看原图，不是十二月实时景色，也不用于证明路线全程无台阶。
+
 大阪城公园适合大人感受城市、孩子观察环境。但本文推荐的是短距离外围散步，不要求登天守阁，也不要求绕完整个园区。选择靠近交通的出入口，遇碎石、台阶和拥挤路段就缩短路线。天气暖和、孩子状态好，再增加一点步行；冬季不为照片久坐吹风。
 
 #### 雨天 B：海游馆一个主项目就足够
+
+**补充地面视角：[海游馆建筑与广场实拍](https://commons.wikimedia.org/wiki/File:Osaka_Aquarium_Kaiyukan.jpg)**。Tokumeigakarinoaoshima，2019 年，[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)。来源页可查看原图；与下方外观照相互补充，不代表当前施工或馆内动线。
 
 ![海游馆外观](./img/japan-kaiyukan.webp)
 
@@ -153,6 +159,8 @@ lede: 不赶景点，也不忽略大人。四天三晚，以大阪为基地，�
 *京都气质示意，并非本方案必到景点。Daderot，2012 年 8 月 22 日，[原图](https://commons.wikimedia.org/wiki/File:Tenryuji_Garden-_DSC05970.JPG)，[CC0](https://creativecommons.org/publicdomain/zero/1.0/)。不能据此期待十二月同样的绿意，也不代表庭园全线适合推车。*
 
 ### 京都雨天：不为了京都而跨城
+
+**室内实景参考：[京都铁道博物馆主馆内景](https://commons.wikimedia.org/wiki/File:Main_building_of_the_Kyoto_Railway_Museum.jpg)**。Christophe95，2018 年，[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)。点击来源页查看原图；照片用来理解展示空间，不保证当前展陈和拥挤程度。
 
 如果尚未出发、持续下雨，就留大阪使用室内模块。京都水族馆或铁道博物馆能作为已经身处京都时的替代，不意味着值得为躲雨多做一次跨城往返。图书、室内亲子设施也可能有预约、年龄或使用规则，未确认前不要写进确定行程。
 
