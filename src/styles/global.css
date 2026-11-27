@@ -142,7 +142,7 @@ button { font-family: inherit; }
   color: inherit; display: block; transition: transform var(--ease-hover);
 }
 .card:hover { text-decoration: none; transform: translateY(-4px); }
-.card img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; }
+.card img { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; display: block; }
 .card .body { padding: 18px 20px 22px; }
 .tags { display: flex; gap: 8px; font-size: 12px; font-weight: 700; }
 .tag { padding: 3px 10px; border-radius: 9999px; background: var(--subtle); color: var(--fg1); }
